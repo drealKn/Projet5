@@ -13,14 +13,17 @@ class DataReciever():
             "tag_contains_0": "contains",
             "tag_0": "fr",
             "page_size": os.getenv("PAGE_SIZE"),
-            "page": self.index + 1,
+            "page": self.index,
             "json": True
         }
 
     def get_data(self):
         data = requests.get(self.request_url, self.request_params)
+        self.request_params['page'] = self.index
         try:
             data.status_code == 200
         except:
-            print("Unable to get the request, please try again")
+            print("Unable to get the request, please try again")        
+        print("Downloading products : " + str(self.index * (100/int(os.getenv("PAGE_NUM"))))+ "%")
         return data.json()['products']
+        

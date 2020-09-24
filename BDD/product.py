@@ -1,9 +1,9 @@
-from peewee import *
-import database
+"""from peewee import *
+
 
 class Product(Model):
     name = CharField()
-    code = IntField()
+    code = IntegerField()
     url = CharField()
     brand = CharField()
     stores = CharField()
@@ -11,4 +11,4 @@ class Product(Model):
     categories = CharField()
 
     class Meta:
-        database = database.db
+        database = database.db"""
