@@ -1,4 +1,5 @@
-"""from peewee import *
+from peewee import *
+import BDD.database
 
 
 class Product(Model):
@@ -8,7 +9,7 @@ class Product(Model):
     brand = CharField()
     stores = CharField()
     nutriscore = CharField()
-    categories = CharField()
+    categories = ForeignKeyField()
 
     class Meta:
-        database = database.db"""
+        database = BDD.database.mysql_db

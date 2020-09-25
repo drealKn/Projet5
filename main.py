@@ -10,11 +10,11 @@ number_of_pages = os.getenv("PAGE_NUM")
 
 
 request = API.datareciever.DataReciever(api_url)
-cleaning = API.datacleaner.DataCleaner()
+cleaner = API.datacleaner.DataCleaner()
 
 for i in range(int(number_of_pages)):
     request.index += 1
     data_to_clean = request.get_data()
-    cleaning.cleaning(data_to_clean)
+    cleaner.cleaning(data_to_clean)
 
-print(cleaning.clean_data)
+#print(cleaner.clean_data)

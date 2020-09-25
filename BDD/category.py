@@ -1,8 +1,9 @@
-"""from peewee import *
+from peewee import *
+import BDD.database
 
 
 class Category(Model):
     name = CharField()
 
     class Meta:
-        database = database.db"""
+        database = BDD.database.mysql_db
