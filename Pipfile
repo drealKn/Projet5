@@ -10,6 +10,7 @@ requests = "*"
 mysql-connector-python = "*"
 python-dotenv = "*"
 peewee = "*"
+pymysql = "*"
 
 [requires]
 python_version = "3.8"
