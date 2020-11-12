@@ -15,9 +15,6 @@ class Category(BaseModel):
     id = peewee.PrimaryKeyField(primary_key = True)
     name = peewee.CharField(50)
 
-class Product_Categories(BaseModel):
-    pass
-
 class Product(BaseModel):
     id = peewee.PrimaryKeyField(primary_key = True)
     name = peewee.CharField(50)
@@ -26,7 +23,11 @@ class Product(BaseModel):
     brands = peewee.CharField(50)
     stores = peewee.CharField(50)
     nutriscore = peewee.CharField(50)
-    categories = peewee.ForeignKeyField(model = Category, backref = 'categories')
+
+class Product_Categories(BaseModel):
+    id = peewee.PrimaryKeyField(primary_key = True)
+    category = peewee.ForeignKeyField(model = Category, backref = 'category')
+    product = peewee.ForeignKeyField(model = Product, backref = 'product')    
 
 class Favorites(BaseModel):
     id = peewee.PrimaryKeyField(primary_key = True)

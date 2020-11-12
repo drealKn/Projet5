@@ -24,6 +24,5 @@ class DataReciever():
             data.status_code == 200
         except:
             print("Unable to get the request, please try again")        
-        print("Downloading products : " + str(self.index * (100/int(os.getenv("PAGE_NUM"))))+ "%")
         return data.json()['products']
                 
