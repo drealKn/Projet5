@@ -12,7 +12,7 @@ class DataReciever():
             "tag_type_0": "countries",
             "tag_contains_0": "contains",
             "tag_0": "fr",
-            "page_size": os.getenv("PAGE_SIZE"),
+            "page_size": os.getenv("PAGE_SIZET"),
             "page": self.index,
             "json": True
         }
