@@ -138,5 +138,14 @@ class Database():
                 substitute_list.append(substitute)
         return substitute_list
 
+    def get_favorites(self):
+        query = BDD.tables.Product.select().join(BDD.tables.Favorites)
+        favorites = [row.name for row in query]
+        return favorites
 
+    def add_favorite(self, favorite):
+        query = BDD.tables.Product.select().where(BDD.tables.Product.name == favorite)
+        for row in query:
+            favorite_id = row.id
+        BDD.tables.Favorites.get_or_create(product=favorite_id)
 
