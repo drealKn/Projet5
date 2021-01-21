@@ -25,4 +25,4 @@ Ensuite il suffit de suivre les instructions, à savoir, entrer le numéro d'une
 
 ## Auteurs
 Listez le(s) auteur(s) du projet ici !
-* **Yoann Lemoine** _alias_ [@outout14](https://github.com/drealKn)
+* **Yoann Lemoine** _alias_ [@drealKn](https://github.com/drealKn)
