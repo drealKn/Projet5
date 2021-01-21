@@ -1,3 +1,8 @@
+"""
+This module handles the creation of the database and the different queries to the database
+to get categories, products, favorites and substitutes within the program
+"""
+
 import mysql.connector as mysql
 import peewee
 import os
@@ -24,16 +29,19 @@ class Database:
         self.create_tables()
 
     def create_db(self):
+        """This function create the database"""
         cursor = self.db.cursor()
 
         cursor.execute("CREATE DATABASE testdb5")
 
     def delete_database(self):
+        """This function delete the database"""
         cursor = self.db.cursor()
         cursor.execute("DROP DATABASE testdb5")
         self.db.commit()
 
     def peewee_connect(self):
+        """This function handles the connection to the database"""
         mysql_db = peewee.MySQLDatabase(
             "testdb5", user="root", passwd="dkanaMYSQL2!", host="localhost"
         )
@@ -41,6 +49,7 @@ class Database:
         return mysql_db
 
     def create_tables(self):
+        """This function handles the creation of the different tables of the database"""
         try:
             BDD.tables.Category.create_table()
         except peewee.OperationalError:
@@ -62,12 +71,14 @@ class Database:
             print("Favorites table already exists!")
 
     def add_categories(self, data):
+        """This function adds the categories into the database"""
         for product in tqdm(data):
             category_names = product[4].split(",")
             for category in category_names:
                 BDD.tables.Category.get_or_create(name=category)
 
     def add_products(self, data):
+        """This function adds the products to the database"""
         for product in tqdm(data):
             BDD.tables.Product.get_or_create(
                 name=product[0],
@@ -79,6 +90,8 @@ class Database:
             )
 
     def add_category_by_product(self, data):
+        """This function adds the ids of the categories
+        linked to the products in the intermediate table"""
         for product in tqdm(data):
             query1 = BDD.tables.Product.select().where(
                 BDD.tables.Product.name == product[0]
@@ -97,11 +110,14 @@ class Database:
                 )
 
     def get_categories(self):
+        """This function handles the query to get the different categories"""
         query = BDD.tables.Category.select().order_by(peewee.fn.Rand()).limit(9)
         categories = [row.name for row in query]
         return categories
 
     def get_products(self, category):
+        """This function handles the query to get
+        the products linked to the chosen category"""
         category = BDD.tables.Category.select().where(
             BDD.tables.Category.name == category
         )
@@ -123,6 +139,8 @@ class Database:
         return products_names
 
     def _get_substitute_nutriscore(self, substitute):
+        """This function handles the query to get
+        the nutriscore of the substitute for the chosen product"""
         substitute_query = BDD.tables.Product.select().where(
             BDD.tables.Product.name == substitute
         )
@@ -130,6 +148,8 @@ class Database:
         return substitute_nutriscore
 
     def get_substitutes(self, product):
+        """This function handles the query to get
+        the substitutes of the chosen product"""
         product_query = BDD.tables.Product.select().where(
             BDD.tables.Product.name == product
         )
@@ -180,11 +200,13 @@ class Database:
         return substitute_list
 
     def get_favorites(self):
+        """This function handles the query to get the saved favorites"""
         query = BDD.tables.Product.select().join(BDD.tables.Favorites)
         favorites = [row.name for row in query]
         return favorites
 
     def add_favorite(self, favorite):
+        """This function add a product to the favorites if the user chose to do so"""
         query = BDD.tables.Product.select().where(BDD.tables.Product.name == favorite)
         for row in query:
             favorite_id = row.id

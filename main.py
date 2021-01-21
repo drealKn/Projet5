@@ -1,3 +1,5 @@
+"""This is the main module, it initializes the database, the download of the products and start the program"""
+
 import API
 import BDD
 import Program

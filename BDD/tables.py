@@ -1,3 +1,7 @@
+"""
+This module handles the different tables of the database
+"""
+
 import peewee
 
 mysql_db = peewee.MySQLDatabase(

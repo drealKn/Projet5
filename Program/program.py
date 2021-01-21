@@ -1,3 +1,7 @@
+"""
+This is the program module, it handles the user interface and the inputs the user enters
+"""
+
 import os
 import sys
 import BDD
@@ -15,6 +19,8 @@ Téléchargements des produits :
         )
 
     def menu(self):
+        """This function handles the first menu to choose
+        between the products or the saved favorites"""
         os.system("clear")
         print("1. Choisir un produit")
         print("2. Accéder aux favoris")
@@ -38,6 +44,7 @@ Téléchargements des produits :
             sys.exit()
 
     def category_choice(self, choices):
+        """This function handles the menu to choose a category of products"""
         os.system("clear")
         print("Choisissez une catégorie :")
         for category in choices:
@@ -58,6 +65,7 @@ Téléchargements des produits :
             self.menu()
 
     def product_choice(self, products):
+        """This function handles the menu to choose a products"""
         os.system("clear")
         print("Choisissez un produit :")
         for product in products:
@@ -78,6 +86,7 @@ Téléchargements des produits :
             self.menu()
 
     def substitute_choice(self, substitutes):
+        """This function handles the menu to add a substitute to the favorites"""
         os.system("clear")
         if substitutes:
             print("Voici les substituts :")
@@ -118,6 +127,7 @@ Téléchargements des produits :
                 self.menu()
 
     def favorites_choice(self, favorites):
+        """This function handles the menu to look at the products saved in the favorites"""
         os.system("clear")
         if favorites != None:
             print("Voici vos favoris :")

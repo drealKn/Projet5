@@ -1,3 +1,7 @@
+"""
+This is the datareciever module, it gets the data from the OpenFoodFacts API
+"""
+
 import requests
 import os
 
@@ -18,6 +22,7 @@ class DataReciever:
         }
 
     def get_data(self):
+        """This is the function that gets the data from the API"""
         data = requests.get(self.request_url, self.request_params)
         self.request_params["page"] = self.index
         try:

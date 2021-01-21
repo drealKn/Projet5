@@ -1,4 +1,8 @@
-"""DataCleaner module"""
+"""
+This is the DataCleaner module,
+it cleans the data we retrieve from the OpenFoodFacts API
+to put it in the database
+"""
 
 
 class DataCleaner:
@@ -6,6 +10,7 @@ class DataCleaner:
         self.clean_data = []
 
     def cleaning(self, data_to_clean):
+        """If a product has all the data required we add it to a list"""
         for i in range(len(data_to_clean)):
             if (
                 data_to_clean[i].get("product_name_fr")
