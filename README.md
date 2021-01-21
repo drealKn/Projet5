@@ -24,5 +24,5 @@ Ensuite il suffit de suivre les instructions, à savoir, entrer le numéro d'une
 * VS Code
 
 ## Auteurs
-Listez le(s) auteur(s) du projet ici !
+
 * **Yoann Lemoine** _alias_ [@drealKn](https://github.com/drealKn)
