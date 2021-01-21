@@ -5,10 +5,12 @@ import os
 from tqdm import tqdm
 from dotenv import load_dotenv
 
+os.system("clear")
+
 load_dotenv()
 
 api_url = os.getenv("API_URL")
-number_of_pages = os.getenv("PAGE_NUM")
+number_of_pages = os.getenv("PAGE_NUMB")
 
 db = BDD.database.Database()
 

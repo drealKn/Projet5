@@ -11,6 +11,8 @@ mysql-connector-python = "*"
 python-dotenv = "*"
 peewee = "*"
 pymysql = "*"
+black = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.8"
