@@ -20,7 +20,6 @@ class Database:
             user=os.getenv("MYSQLUSER"),
             passwd=os.getenv("MYSQLPWD"),
         )
-        self.delete_database()
         try:
             self.create_db()
         except:
@@ -32,18 +31,18 @@ class Database:
         """This function create the database"""
         cursor = self.db.cursor()
 
-        cursor.execute("CREATE DATABASE testdb5")
+        cursor.execute("CREATE DATABASE substitutsdb")
 
     def delete_database(self):
         """This function delete the database"""
         cursor = self.db.cursor()
-        cursor.execute("DROP DATABASE testdb5")
+        cursor.execute("DROP DATABASE substitutsdb")
         self.db.commit()
 
     def peewee_connect(self):
         """This function handles the connection to the database"""
         mysql_db = peewee.MySQLDatabase(
-            "testdb5", user="root", passwd="dkanaMYSQL2!", host="localhost"
+            "substitutsdb", user=os.getenv("MYSQLUSER"), passwd=os.getenv("MYSQLPWD"), host=os.getenv("MYSQLHOST")
         )
 
         return mysql_db

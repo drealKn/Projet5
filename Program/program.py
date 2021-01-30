@@ -24,6 +24,7 @@ Téléchargements des produits :
         os.system("clear")
         print("1. Choisir un produit")
         print("2. Accéder aux favoris")
+        print("3. Effacer la base de données")
         n = input(
             "Entrez le numéro d'une catégorie ou q pour quitter puis appuyez sur <Entrée> :"
         )
@@ -39,6 +40,8 @@ Téléchargements des produits :
         elif n == "2":
             favorites_choices = self.db.get_favorites()
             favorites_choice = self.favorites_choice(favorites_choices)
+        elif n == "3":
+            self.delete_database()
 
         elif n.lower() == "q":
             sys.exit()
@@ -152,3 +155,20 @@ Téléchargements des produits :
                 print("Vous n'avez pas entré une valeur valide")
             elif n.lower() == "q":
                 self.menu()
+
+    def delete_database(self):
+        print("""Êtes-vous sur de vouloir faire cela ?/n
+        Cela supprimera tous vos favoris et produits enregistrés et fermera le programme./n
+        La base de données sera recréée au prochain démarrage du programme""")
+        print("1. Oui")
+        print("2. Non")
+        n = input("Entrez 1 ou 2 puis valider avec <Entrée>")
+        while n != "1" or n != "2":
+                print("Vous n'avez pas entré une valeur valide")
+                n = input("Entrez 1 ou 2 puis valider avec <Entrée>")
+        if n == "1":
+            self.db.delete_database()
+            sys.exit()
+        elif n == "2":
+            self.menu()
+

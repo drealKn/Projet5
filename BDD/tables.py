@@ -3,9 +3,13 @@ This module handles the different tables of the database
 """
 
 import peewee
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 mysql_db = peewee.MySQLDatabase(
-    "testdb5", user="root", passwd="dkanaMYSQL2!", host="localhost"
+    "substitutsdb", user=os.getenv("MYSQLUSER"), passwd=os.getenv("MYSQLPWD"), host=os.getenv("MYSQLPWD")
 )
 
 
@@ -38,3 +42,4 @@ class Product_Categories(BaseModel):
 class Favorites(BaseModel):
     id = peewee.PrimaryKeyField(primary_key=True)
     product = peewee.ForeignKeyField(model=Product, backref="favorites")
+    
