@@ -28,7 +28,7 @@ Téléchargements des produits :
         n = input(
             "Entrez le numéro d'une catégorie ou q pour quitter puis appuyez sur <Entrée> :"
         )
-        while n != "1" and n != "2" and n.lower() != "q":
+        while n != "1" and n != "2" and n != "3" and n.lower() != "q":
             print("Vous n'avez pas entré une valeur valide")
             n = input(
                 "Entrez le numéro d'une catégorie ou q pour quitter puis appuyez sur <Entrée> :"
@@ -157,13 +157,15 @@ Téléchargements des produits :
                 self.menu()
 
     def delete_database(self):
+        """This function handles the menu to delete the database"""
+        os.system("clear")
         print("""Êtes-vous sur de vouloir faire cela ?/n
         Cela supprimera tous vos favoris et produits enregistrés et fermera le programme./n
         La base de données sera recréée au prochain démarrage du programme""")
         print("1. Oui")
         print("2. Non")
         n = input("Entrez 1 ou 2 puis valider avec <Entrée>")
-        while n != "1" or n != "2":
+        while n != "1" and n != "2":
                 print("Vous n'avez pas entré une valeur valide")
                 n = input("Entrez 1 ou 2 puis valider avec <Entrée>")
         if n == "1":
@@ -171,4 +173,3 @@ Téléchargements des produits :
             sys.exit()
         elif n == "2":
             self.menu()
-
