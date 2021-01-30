@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 mysql_db = peewee.MySQLDatabase(
-    "substitutsdb", user=os.getenv("MYSQLUSER"), passwd=os.getenv("MYSQLPWD"), host=os.getenv("MYSQLPWD")
+    "substitutsdb", user=os.getenv("MYSQLUSER"), passwd=os.getenv("MYSQLPWD"), host=os.getenv("MYSQLHOST")
 )
 
 
