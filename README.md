@@ -12,7 +12,11 @@ _pipenv install -r requirements.txt_
 
 ## Démarrage
 
-Pour lancer le programme, lancer la commande :
+Avant de lancer le programme vous devez renseigner vos identifiants MYSQL dans le fichier .env afin de pouvoir créer la base de données sur votre machine locale.
+
+Vous pouvez aussi modifier le nombre de pages et le nombre de produits par page que l'API récupère.
+
+Ensuite pour lancer le programme, lancer la commande :
 
 _python main.py_
 
