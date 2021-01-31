@@ -14,6 +14,7 @@ load_dotenv()
 
 
 class Database:
+    """This class handles all functions to create and manage the database and queries"""
     def __init__(self):
         self.db = mysql.connect(
             host=os.getenv("MYSQLHOST"),
@@ -36,7 +37,7 @@ class Database:
     def delete_database(self):
         """This function delete the database"""
         cursor = self.db.cursor()
-        cursor.execute("DROP DATABASE substitutsdb")
+        cursor.execute("DROP TABLE Category,Product,Favorites")
         self.db.commit()
 
     def peewee_connect(self):
@@ -134,7 +135,8 @@ class Database:
                 BDD.tables.Product.id == product_id
             )
             for row in query:
-                products_names.append(row.name)
+                if row.name not in products_names:
+                    products_names.append(row.name)
         return products_names
 
     def _get_substitute_nutriscore(self, substitute):
@@ -197,6 +199,16 @@ class Database:
             ):
                 substitute_list.append(substitute)
         return substitute_list
+
+    def get_product_data(self, substitute):
+        """This function handles the query to get the data about a substitute"""
+        query = BDD.tables.Product.select().where(BDD.tables.Product.name == substitute)
+        for row in query:
+            name = row.name
+            nutriscore = row.nutriscore
+            store = row.stores
+            url = row.url
+        return [name, nutriscore, store, url]
 
     def get_favorites(self):
         """This function handles the query to get the saved favorites"""
