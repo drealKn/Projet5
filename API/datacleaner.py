@@ -6,6 +6,7 @@ to put it in the database
 
 
 class DataCleaner:
+    """This class handles the cleaning of the data"""
     def __init__(self):
         self.clean_data = []
 
@@ -21,12 +22,13 @@ class DataCleaner:
                 and data_to_clean[i].get("nutriscore_grade")
                 and data_to_clean[i].get("code")
             ):
+                print([data_to_clean[i].get("stores")])
                 self.clean_data.append(
                     [
                         data_to_clean[i].get("product_name_fr"),
                         data_to_clean[i].get("url"),
                         data_to_clean[i].get("brands"),
-                        [data_to_clean[i].get("stores")[0].capitalize()],
+                        data_to_clean[i].get("stores"),
                         data_to_clean[i].get("categories"),
                         data_to_clean[i].get("nutriscore_grade").upper(),
                         data_to_clean[i].get("code"),
