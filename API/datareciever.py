@@ -7,6 +7,7 @@ import os
 
 
 class DataReciever:
+    """This class handles the function to recieve the data from the API"""
     def __init__(self, url):
         self.request_url = url
         self.index = 0
