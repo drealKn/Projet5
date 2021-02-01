@@ -22,7 +22,6 @@ class DataCleaner:
                 and data_to_clean[i].get("nutriscore_grade")
                 and data_to_clean[i].get("code")
             ):
-                print([data_to_clean[i].get("stores")])
                 self.clean_data.append(
                     [
                         data_to_clean[i].get("product_name_fr"),
